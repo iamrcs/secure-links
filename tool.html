@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Download Page Generator</title>
+    <base href="/" />
+    <link rel="stylesheet" href="tool.css" />
+</head>
+
+<body>
+    <main>
+        <header>
+            <h1>Download Page Generator</h1>
+            <p>Responsive · Simple · Professional</p>
+        </header>
+
+        <form id="generateForm" autocomplete="off" novalidate>
+            <div>
+                <label for="name">File Name</label>
+                <input id="name" type="text" required placeholder="e.g. Movie Example.mp4">
+            </div>
+
+            <div>
+                <label for="size">File Size</label>
+                <input id="size" type="text" required placeholder="e.g. 1.2 GB">
+            </div>
+
+            <div>
+                <label for="desc">Description</label>
+                <input id="desc" type="text" required placeholder="Short description (1080p, BluRay, etc)">
+            </div>
+
+            <div>
+                <label for="mg">Mega.nz Link</label>
+                <input id="mg" type="text" placeholder="Optional">
+            </div>
+
+            <div>
+                <label for="gd">Google Drive Link</label>
+                <input id="gd" type="text" placeholder="Optional">
+            </div>
+
+            <div>
+                <label for="tg">Telegram File ID</label>
+                <input id="tg" type="text" placeholder="Optional">
+            </div>
+
+            <div class="controls">
+                <button type="submit" class="btn btn-primary">Generate Link</button>
+                <button type="button" id="clearBtn" class="btn">Clear</button>
+            </div>
+        </form>
+
+        <section id="outputSection">
+            <h2 style="font-size:15px;font-weight:600;margin-bottom:8px">Generated Link</h2>
+            <input id="output" readonly aria-label="Generated link" />
+            <div class="output-actions">
+                <button id="copyBtn" class="btn" title="Copy link">Copy</button>
+                <a id="openBtn" class="btn" target="_blank" rel="noopener">Open</a>
+            </div>
+            <p class="small">Copy or open your generated link. Each parameter is base64 encoded.</p>
+        </section>
+
+        <footer>
+            <p>Default Website: <a href="https://sl.itisuniqueofficial.com" target="_blank"
+                    rel="noopener">sl.itisuniqueofficial.com</a></p>
+        </footer>
+    </main>
+
+    <script src="tool.js"></script>
+</body>
+
+</html>

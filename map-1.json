@@ -1,0 +1,17 @@
+{
+  "file1": {
+    "name": "Another File.zip",
+    "size": "500 MB",
+    "desc": "Compressed Archive",
+    "mg": "50pllDTJ#rpwRtMXCK2qDMEo3wM7f1FA66s_asOSQQLC84s-v92g",
+    "gd": "1fzXS2M8aLPpcFmtakw35TtCHXuIm4Af5"
+  },
+  "file2": {
+    "name": "Another File.zip",
+    "size": "500 MB",
+    "desc": "Compressed Archive",
+    "mg": "zyx987654321",
+    "gd": "9f8e7d6c5b4a",
+    "tg": "tgfile456"
+  }
+}

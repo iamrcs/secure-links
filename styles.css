@@ -1,0 +1,91 @@
+body {
+  margin: 0;
+  background: #f9f9f9;
+  color: #222;
+}
+
+header,
+footer {
+  text-align: center;
+  padding: 15px;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+footer {
+  border-top: 1px solid #ddd;
+  border-bottom: none;
+  font-size: 14px;
+  color: #666;
+  background-color: #f9f9f9;
+}
+
+main {
+  padding: 20px;
+  max-width: 700px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.file-info p {
+  margin: 8px 0;
+}
+
+.file-info strong {
+  color: #444;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 300px;
+  margin: 20px auto 0;
+}
+
+.links a {
+  display: block;
+  padding: 12px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  transition: background 0.25s;
+}
+
+/* Button colors */
+.mega {
+  background: #7028e4;
+}
+
+.mega:hover {
+  background: #5a1fbb;
+}
+
+.gdrive {
+  background: #34a853;
+}
+
+.gdrive:hover {
+  background: #2b8c44;
+}
+
+.telegram {
+  background: #333;
+}
+
+.telegram:hover {
+  background: #111;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+}
