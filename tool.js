@@ -6,12 +6,12 @@ function encodeBase64(str = "") {
   }
 }
 
-async function shortenUrl(longUrl, customSlug = "") {
+async function shortenUrl(longUrl) {
   try {
     const response = await fetch("https://iiuo.org/shorten", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ url: longUrl, slug: customSlug })
+      body: JSON.stringify({ url: longUrl }) // no slug
     });
 
     const data = await response.json();
@@ -47,6 +47,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const longUrl = `${baseUrl}/?${params}`;
 
+    // Show temporary message while generating short URL
+    output.value = "Generating short URL...";
+    outputSection.style.display = "block";
+    openBtn.removeAttribute("href");
+    output.focus();
+    output.select();
+
     // Send to iiuo.org shortener
     const shortUrl = await shortenUrl(longUrl);
 
@@ -58,10 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
       output.value = "Error: Could not shorten URL.";
       openBtn.removeAttribute("href");
     }
-
-    outputSection.style.display = "block";
-    output.focus();
-    output.select();
   });
 
   copyBtn.addEventListener("click", async () => {
