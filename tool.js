@@ -1,50 +1,94 @@
-function encodeBase64(str) { try { return btoa(unescape(encodeURIComponent(str || ''))); } catch (e) { return '' } }
+function encodeBase64(str = "") {
+  try {
+    return btoa(unescape(encodeURIComponent(str)));
+  } catch {
+    return "";
+  }
+}
 
-const form = document.getElementById('generateForm');
-const outputSection = document.getElementById('outputSection');
-const output = document.getElementById('output');
-const copyBtn = document.getElementById('copyBtn');
-const openBtn = document.getElementById('openBtn');
-const clearBtn = document.getElementById('clearBtn');
+async function shortenUrl(longUrl, customSlug = "") {
+  try {
+    const response = await fetch("https://iiuo.org/shorten", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url: longUrl, slug: customSlug })
+    });
 
-form.addEventListener('submit', function (e) {
+    const data = await response.json();
+    if (data.ok && data.short_url) {
+      return data.short_url;
+    } else {
+      throw new Error(data.error || "Unknown error while shortening");
+    }
+  } catch (err) {
+    console.error("Shortening failed:", err);
+    return null;
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("generateForm");
+  const outputSection = document.getElementById("outputSection");
+  const output = document.getElementById("output");
+  const copyBtn = document.getElementById("copyBtn");
+  const openBtn = document.getElementById("openBtn");
+  const clearBtn = document.getElementById("clearBtn");
+
+  const baseUrl = "http://sl.itisuniqueofficial.com";
+
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const baseUrl = 'http://sl.itisuniqueofficial.com';
-    const name = encodeBase64(document.getElementById('name').value.trim());
-    const size = encodeBase64(document.getElementById('size').value.trim());
-    const desc = encodeBase64(document.getElementById('desc').value.trim());
-    const mg = encodeBase64(document.getElementById('mg').value.trim());
-    const gd = encodeBase64(document.getElementById('gd').value.trim());
-    const tg = encodeBase64(document.getElementById('tg').value.trim());
+    // Build encoded long URL
+    const fields = ["name", "size", "desc", "mg", "gd", "tg"];
+    const params = fields
+      .map((id) => `${id}=${encodeBase64(document.getElementById(id).value.trim())}`)
+      .join("&");
 
-    const url = `${baseUrl}/?name=${name}&size=${size}&desc=${desc}&mg=${mg}&gd=${gd}&tg=${tg}`;
+    const longUrl = `${baseUrl}/?${params}`;
 
-    output.value = url;
-    openBtn.href = url;
-    outputSection.style.display = 'block';
+    // Send to iiuo.org shortener
+    const shortUrl = await shortenUrl(longUrl);
+
+    // Show short URL if success
+    if (shortUrl) {
+      output.value = shortUrl;
+      openBtn.href = shortUrl;
+    } else {
+      output.value = "Error: Could not shorten URL.";
+      openBtn.removeAttribute("href");
+    }
+
+    outputSection.style.display = "block";
     output.focus();
     output.select();
-});
+  });
 
-copyBtn.addEventListener('click', async function () {
-    const val = output.value || '';
+  copyBtn.addEventListener("click", async () => {
+    const val = output.value.trim();
     if (!val) return;
+
     try {
-        await navigator.clipboard.writeText(val);
-        const prev = copyBtn.textContent;
-        copyBtn.textContent = 'Copied!';
-        setTimeout(() => copyBtn.textContent = prev, 1200);
-    } catch (err) {
-        output.select();
-        try { document.execCommand('copy'); } catch (e) { }
+      await navigator.clipboard.writeText(val);
+      const prevText = copyBtn.textContent;
+      copyBtn.textContent = "Copied!";
+      setTimeout(() => (copyBtn.textContent = prevText), 1200);
+    } catch {
+      output.select();
+      document.execCommand("copy");
     }
-});
+  });
 
-clearBtn.addEventListener('click', function () {
+  clearBtn.addEventListener("click", () => {
     form.reset();
-    output.value = '';
-    outputSection.style.display = 'none';
-});
+    output.value = "";
+    outputSection.style.display = "none";
+    openBtn.removeAttribute("href");
+  });
 
-output.addEventListener('keydown', function (e) { if (e.key === 'Enter') { window.open(output.value, '_blank'); } });
+  output.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && output.value) {
+      window.open(output.value, "_blank");
+    }
+  });
+});
