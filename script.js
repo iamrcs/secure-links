@@ -61,7 +61,7 @@ function renderFile(file) {
   const links = createEl("div", null, "links");
   if (file.mg) links.appendChild(makeLink(`https://mega.nz/file/${file.mg}`, "⬇ Download via Mega", "mega"));
   if (file.gd) links.appendChild(makeLink(`https://drive.google.com/uc?export=download&id=${file.gd}`, "⬇ Google Drive", "gdrive"));
-  if (file.tg) links.appendChild(makeLink(`https://t.me/reportcloudstorage_bot?start=${file.tg}`, "⬇ Telegram", "telegram"));
+  if (file.tg) links.appendChild(makeLink(`https://t.me/ASFileStore2_Bot?start=${file.tg}`, "⬇ Telegram", "telegram"));
 
   if (links.children.length) $out.appendChild(links);
 
@@ -114,3 +114,4 @@ function renderError(msg) {
       renderError(`Error: ${err.message}`);
     });
 })();
+
