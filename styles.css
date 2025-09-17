@@ -2,6 +2,8 @@ body {
   margin: 0;
   background: #f9f9f9;
   color: #222;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
 }
 
 header,
@@ -32,14 +34,28 @@ h1 {
   color: #333;
 }
 
-.file-info p {
-  margin: 8px 0;
+/* File Info */
+.file-info {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 6px 12px;
+  justify-content: start;
+  text-align: left;
+  max-width: 400px;
+  margin: 0 auto 20px;
 }
 
-.file-info strong {
+.file-info dt {
+  font-weight: bold;
+  color: #333;
+}
+
+.file-info dd {
+  margin: 0;
   color: #444;
 }
 
+/* Links Section */
 .links {
   display: flex;
   flex-direction: column;
@@ -55,7 +71,12 @@ h1 {
   text-decoration: none;
   font-weight: bold;
   text-align: center;
-  transition: background 0.25s;
+  border-radius: 6px;
+  transition: background 0.25s, transform 0.1s ease-in-out;
+}
+
+.links a:hover {
+  transform: translateY(-2px);
 }
 
 /* Button colors */
@@ -83,6 +104,7 @@ h1 {
   background: #111;
 }
 
+/* Error & Loading */
 .error {
   color: red;
   text-align: center;
@@ -90,13 +112,9 @@ h1 {
   font-weight: bold;
 }
 
-.file-info dt {
-  font-weight: bold;
-  margin-top: 8px;
-}
-
-.file-info dd {
-  margin: 0 0 8px 0;
-  padding-left: 10px;
-  color: #444;
+.loading {
+  color: #555;
+  text-align: center;
+  margin-top: 20px;
+  font-style: italic;
 }
