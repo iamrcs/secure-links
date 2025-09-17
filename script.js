@@ -61,9 +61,9 @@ const renderFile = (file) => {
   const frag = document.createDocumentFragment();
 
   const info = createEl("dl", null, "file-info");
-  appendInfo(info, "Name: ", file.name, true);        // add <br>
-  appendInfo(info, "Size: ", file.size, true);        // add <br>
-  appendInfo(info, "Description: ", file.desc);       // no <br>
+  appendInfo(info, "Name:", file.name, true);        // add <br>
+  appendInfo(info, "Size:", file.size, true);        // add <br>
+  appendInfo(info, "Description:", file.desc);       // no <br>
   frag.appendChild(info);
 
   const links = createEl("div", null, "links");
@@ -140,3 +140,4 @@ const renderLoading = () => {
     renderError("Error loading file data.");
   }
 })();
+
