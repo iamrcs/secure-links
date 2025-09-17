@@ -2,7 +2,6 @@ body {
   margin: 0;
   background: #f9f9f9;
   color: #222;
-  font-family: Arial, sans-serif;
   line-height: 1.5;
 }
 
@@ -36,12 +35,6 @@ h1 {
 
 /* File Info */
 .file-info {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 6px 12px;
-  justify-content: start;
-  text-align: left;
-  max-width: 400px;
   margin: 0 auto 20px;
 }
 
@@ -71,7 +64,6 @@ h1 {
   text-decoration: none;
   font-weight: bold;
   text-align: center;
-  border-radius: 6px;
   transition: background 0.25s, transform 0.1s ease-in-out;
 }
 
