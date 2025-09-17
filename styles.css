@@ -42,10 +42,12 @@ h1 {
 .file-info dt {
   font-weight: bold;
   color: #333;
+  display: inline;   /* label inline */
 }
 
 .file-info dd {
-  margin: 0;
+  display: inline;   /* value inline */
+  margin: 0 0 0 5px; /* space after colon */
   color: #444;
 }
 
@@ -111,4 +113,5 @@ h1 {
   margin-top: 20px;
   font-style: italic;
 }
+
 
