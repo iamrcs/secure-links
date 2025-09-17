@@ -1,11 +1,16 @@
+/* Reset & Base Styles */
 body {
   margin: 0;
   background: #f9f9f9;
   color: #222;
   line-height: 1.5;
-  overflow-wrap:break-word;word-break:normal;line-break:auto;hyphens:auto;
+  overflow-wrap: break-word;
+  word-break: normal;
+  line-break: auto;
+  hyphens: auto;
 }
 
+/* Header & Footer */
 header,
 footer {
   text-align: center;
@@ -22,6 +27,7 @@ footer {
   background-color: #f9f9f9;
 }
 
+/* Main Content */
 main {
   padding: 20px;
   max-width: 700px;
@@ -42,12 +48,13 @@ h1 {
 .file-info dt {
   font-weight: bold;
   color: #333;
-  display: inline;   /* label inline */
+  display: inline; /* label inline */
 }
 
 .file-info dd {
-  display: inline;   /* value inline */
+  display: inline; /* value inline */
   color: #444;
+  margin-left: 5px; /* small spacing between label & value */
 }
 
 /* Links Section */
@@ -73,7 +80,7 @@ h1 {
   transform: translateY(-2px);
 }
 
-/* Button colors */
+/* Button Colors */
 .mega {
   background: #7028e4;
 }
@@ -98,7 +105,7 @@ h1 {
   background: #111;
 }
 
-/* Error & Loading */
+/* Error & Loading Messages */
 .error {
   color: red;
   text-align: center;
@@ -112,6 +119,3 @@ h1 {
   margin-top: 20px;
   font-style: italic;
 }
-
-
-
