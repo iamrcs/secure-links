@@ -54,7 +54,6 @@ h1 {
 .file-info dd {
   display: inline; /* value inline */
   color: #444;
-  margin-left: 5px; /* small spacing between label & value */
 }
 
 /* Links Section */
