@@ -26,10 +26,11 @@ const createEl = (tag, text, className) => {
   return el;
 };
 
-const appendInfo = (container, label, value) => {
+const appendInfo = (container, label, value, addBreak = false) => {
   const dt = createEl("dt", label);
   const dd = createEl("dd", value || "N/A");
   container.append(dt, dd);
+  if (addBreak) container.appendChild(document.createElement("br"));
 };
 
 const makeLink = (href, text, cls) => {
@@ -60,9 +61,9 @@ const renderFile = (file) => {
   const frag = document.createDocumentFragment();
 
   const info = createEl("dl", null, "file-info");
-  appendInfo(info, "Name: ", file.name);
-  appendInfo(info, "Size: ", file.size);
-  appendInfo(info, "Description: ", file.desc);
+  appendInfo(info, "Name: ", file.name, true);        // add <br>
+  appendInfo(info, "Size: ", file.size, true);        // add <br>
+  appendInfo(info, "Description: ", file.desc);       // no <br>
   frag.appendChild(info);
 
   const links = createEl("div", null, "links");
