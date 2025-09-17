@@ -3,6 +3,7 @@ body {
   background: #f9f9f9;
   color: #222;
   line-height: 1.5;
+  overflow-wrap:break-word;word-break:normal;line-break:auto;hyphens:auto;
 }
 
 header,
@@ -110,3 +111,4 @@ h1 {
   margin-top: 20px;
   font-style: italic;
 }
+
